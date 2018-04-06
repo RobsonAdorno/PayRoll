@@ -32,7 +32,7 @@ namespace FolhaDePagamento.View
                 }else{
                     Console.WriteLine("CPF Inválido!");
                 }
-            VendedorDAO.Cadastrar(func);
+           
             Console.WriteLine("CLique para voltar ao menu!");
             Console.ReadKey();
             }
