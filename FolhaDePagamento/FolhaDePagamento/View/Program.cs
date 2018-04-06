@@ -46,7 +46,7 @@ namespace FolhaDePagamento
                         Console.WriteLine("Opção Inválida!");
                         break;
                 }
-            } while (op != "S" || op.Equals("0"));
+            } while (op.Equals("0"));
 
 
         }
