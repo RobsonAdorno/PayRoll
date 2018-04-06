@@ -35,5 +35,17 @@ namespace FolhaDePagamento.DAL
 
             return ListaFuncio;
         }
+
+        public static bool CadastrationCPF(string cpf){
+
+            foreach (Funcionario func in ListaFuncio)
+            {
+                if (cpf.Equals(func.cpf)){
+                    
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

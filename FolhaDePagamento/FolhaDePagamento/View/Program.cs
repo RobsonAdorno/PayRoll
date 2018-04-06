@@ -34,12 +34,19 @@ namespace FolhaDePagamento
                         break;
 
                     case "2":
-                        foreach (Funcionario func in VendedorDAO.Mostrar())
-                        {
-                            Console.WriteLine("CPF do funcionário: " + func.cpf);
-                            Console.WriteLine("Nome do funcionário: " + func.nome);
-                        }
+                        // Funcionario func = new Funcionario();
 
+                        Console.WriteLine("Digite o CPF do funcionário!");
+                        string cpfs = Console.ReadLine();
+
+                        if (VendedorDAO.CadastrationCPF(cpfs))
+                        {
+                            Console.WriteLine("Seguinte CPF já está cadastrado: " + cpfs + "\nCujo nome do Funcionário é: ");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Usuário não cadastrado!");
+                        }    
                         break;
 
                     default:
