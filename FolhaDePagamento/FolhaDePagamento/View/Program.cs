@@ -10,6 +10,7 @@ namespace FolhaDePagamento
         static void Main(string[] args)
         {
             String op;
+
             do
             {
                
@@ -34,19 +35,36 @@ namespace FolhaDePagamento
                         break;
 
                     case "2":
-                        // Funcionario func = new Funcionario();
+                        //Funcionario func = new Funcionario();
+                        PayRoll pr = new PayRoll();
+
 
                         Console.WriteLine("Digite o CPF do funcionário!");
                         string cpfs = Console.ReadLine();
-
+                        //Esse metodo "CadastrationCPF()" apenas serve para verificar se o CPF já existe na base de dados
                         if (VendedorDAO.CadastrationCPF(cpfs))
                         {
-                            Console.WriteLine("Seguinte CPF já está cadastrado: " + cpfs + "\nCujo nome do Funcionário é: ");
+                            
+                            foreach (Funcionario v in VendedorDAO.Mostrar())
+                            {
+                                Console.WriteLine("Seguinte CPF já está cadastrado: " + v.cpf + "\nCujo nome do Funcionário é: " + v.nome);
+                                pr.mesAtual  = DateTime.Now.Month;
+                                pr.anoAtual = DateTime.Now.Year;
+                                Console.WriteLine("Digite as horas trabalhadas do funcionário, por favor!");
+                                pr.horasTrabalhadas = Convert.ToInt16(Console.ReadLine());
+                                Console.WriteLine("Digite o valor da hora trabalhada do funcionário, por favor!");
+                                pr.valorHorasTrabalhadas = Convert.ToInt16(Console.ReadLine());
+
+                            }
+
                         }
                         else
                         {
-                            Console.WriteLine("Usuário não cadastrado!");
-                        }    
+                            Console.WriteLine("Usuário não encontrado na base de dados!");
+                        }
+
+
+
                         break;
 
                     default:
