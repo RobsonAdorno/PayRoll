@@ -13,22 +13,39 @@ namespace FolhaDePagamento.DAL
         Funcionario funcio = new Funcionario();
         VendedorDAO ahh = new VendedorDAO();
 
-        public static bool CallThePayRoll(PayRoll pr)
+        public static PayRoll CallThePayRoll(PayRoll pr)
         {
 
-            if ((funcio.cpf) || (pr.anoAtual) || (pr.mesAtual) != null){
+            foreach (PayRoll item in ListOfPayRoll)
+            {
 
+                if (item.anoAtual.Equals(pr.anoAtual) || item.mesAtual.Equals(pr.mesAtual) || item.Funcionario.cpf.Equals(pr.Funcionario.cpf))
+                {
+                    Console.WriteLine(item);
+                    return item;
+
+                }
 
             }
+            return null;
         }
 
 
 
-        public static void CalculatePayRoll(PayRoll p){
+        public static bool CadastrationPayRoll(PayRoll p)
+        {
 
-
+            if (CallThePayRoll(p) != null)
+            {
+                return false;
+            }
             ListOfPayRoll.Add(p);
+            return true;
 
+        }
+
+        public static List<PayRoll> ShowTheRoll(){
+            return ListOfPayRoll;
         }
     }
 }
