@@ -35,41 +35,7 @@ namespace FolhaDePagamento
                         break;
 
                     case "2":
-                        //Funcionario func = new Funcionario();
-                        PayRoll pr = new PayRoll();
-
-
-                        Console.WriteLine("Digite o CPF do funcionário!");
-                        string cpfs = Console.ReadLine();
-                        //Esse metodo "CadastrationCPF()" apenas serve para verificar se o CPF já existe na base de dados
-                        if (VendedorDAO.CadastrationCPF(cpfs))
-                        {
-                            foreach (Funcionario v in VendedorDAO.Mostrar())
-                            {
-                                Console.WriteLine("Seguinte CPF já está cadastrado: " + v.cpf + "\nCujo nome do Funcionário é: " + v.nome);
-                            }
-
-                            pr.mesAtual = DateTime.Now.Month;
-                            pr.anoAtual = DateTime.Now.Year;
-                            Console.WriteLine("Digite as horas trabalhadas do funcionário, por favor!");
-                            pr.horasTrabalhadas = Convert.ToInt16(Console.ReadLine());
-                            Console.WriteLine("Digite o valor da hora trabalhada do funcionário, por favor!");
-                            pr.valorHorasTrabalhadas = Convert.ToInt32(Console.ReadLine());
-                            FolhaDePagamentoDAO.CadastrationPayRoll(pr);
-                            if(pr.ToString() != null){
-                                foreach (PayRoll item in FolhaDePagamentoDAO.ShowTheRoll())
-                                {
-                                    Console.WriteLine(item.anoAtual);
-                                }
-                            }
-                                
-                                Console.WriteLine("Houve algum problema!");
-                            }else{
-                            Console.WriteLine("Usuário não encontrado na base de dados!");
-                        }
-
-
-
+                        PayRollView.Exibir();
                         break;
 
                     default:
