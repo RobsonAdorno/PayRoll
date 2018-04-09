@@ -15,8 +15,10 @@ namespace FolhaDePagamento.Model
         public double valorHorasTrabalhadas { get; set; }
 
         public override string ToString(){
+            
+
             return "Nome: " + Funcionario.nome +
-            "/nCPF: " + Funcionario.cpf + "/nMês Atual:" + mesAtual + "/nAno Atual: " + anoAtual;
+            "\nCPF: " + Funcionario.cpf + "\nMês Atual:" + mesAtual + "\nAno Atual: " + anoAtual;
 
         }
     }

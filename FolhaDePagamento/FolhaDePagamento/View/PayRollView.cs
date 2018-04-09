@@ -12,7 +12,6 @@ namespace FolhaDePagamento.View
             //Funcionario func = new Funcionario();
             PayRoll pr = new PayRoll();
 
-
             Console.WriteLine("Digite o CPF do funcionário!");
             string cpfs = Console.ReadLine();
             //Esse metodo "CadastrationCPF()" apenas serve para verificar se o CPF já existe na base de dados
@@ -29,6 +28,7 @@ namespace FolhaDePagamento.View
                 pr.horasTrabalhadas = Convert.ToInt16(Console.ReadLine());
                 Console.WriteLine("Digite o valor da hora trabalhada do funcionário, por favor!");
                 pr.valorHorasTrabalhadas = Convert.ToInt32(Console.ReadLine());
+                FolhaDePagamentoDAO.CadastrationPayRoll(pr);
 
                 if (FolhaDePagamentoDAO.CadastrationPayRoll(pr))
                 {

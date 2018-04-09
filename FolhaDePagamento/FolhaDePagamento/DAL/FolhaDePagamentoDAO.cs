@@ -8,17 +8,20 @@ namespace FolhaDePagamento.DAL
     public class FolhaDePagamentoDAO
     {
 
-        private static List<PayRoll> ListOfPayRoll = new List<PayRoll>();
+        private static HashSet<PayRoll> ListOfPayRoll = new HashSet<PayRoll>();
 
-        Funcionario funcio = new Funcionario();
+
         VendedorDAO ahh = new VendedorDAO();
 
         public static PayRoll CallThePayRoll(PayRoll pr)
         {
+            Funcionario funcio = new Funcionario();
+            PayRoll prrr = new PayRoll();
 
+            prrr.ToString();
             foreach (PayRoll item in ListOfPayRoll)
             {
-
+                   
                 if (item.anoAtual.Equals(pr.anoAtual) || item.mesAtual.Equals(pr.mesAtual) || item.Funcionario.cpf.Equals(pr.Funcionario.cpf))
                 {
                     Console.WriteLine(item);
@@ -44,7 +47,7 @@ namespace FolhaDePagamento.DAL
 
         }
 
-        public static List<PayRoll> ShowTheRoll(){
+        public static HashSet<PayRoll> ShowTheRoll(){
             return ListOfPayRoll;
         }
     }

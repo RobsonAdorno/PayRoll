@@ -38,6 +38,20 @@ namespace FolhaDePagamento
                         PayRollView.Exibir();
                         break;
 
+                    case "3":
+                        Console.WriteLine("Digite o CPF do funcionário!");
+                        string cpf = Console.ReadLine();
+                        PayRoll pr = new PayRoll();
+
+                        if(FolhaDePagamentoDAO.CadastrationPayRoll(pr).Equals(cpf)){
+                            foreach (PayRoll item in FolhaDePagamentoDAO.ShowTheRoll())
+                            {
+                                Console.WriteLine("O nome: " + item.Funcionario.nome + "/nCPF:" +item.Funcionario.cpf + "Ano da folha: " + item.anoAtual +
+                                                  "Mes da folha: " + item.mesAtual);
+                            }
+                        }
+                        break;
+
                     default:
                         Console.WriteLine("Opção Inválida!");
                         break;
