@@ -15,6 +15,7 @@ namespace FolhaDePagamento
             {
                
                 Console.Clear();
+                Console.ReadKey();
                 Console.WriteLine("Digite a opção desejada abaixo:");
                 Console.WriteLine("----------------------------------");
                 Console.WriteLine("1) Cadastrar Funcionário");
