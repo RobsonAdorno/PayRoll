@@ -23,7 +23,7 @@ namespace FolhaDePagamento.View
                     pr.Funcionario.cpf = v.cpf;
                     pr.Funcionario.nome = v.nome;
                 }
-
+                
                 pr.mesAtual = DateTime.Now.Month;
                 pr.anoAtual = DateTime.Now.Year;
                 Console.WriteLine("Digite as horas trabalhadas do funcionário, por favor!");
