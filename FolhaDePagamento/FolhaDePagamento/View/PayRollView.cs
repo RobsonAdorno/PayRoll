@@ -9,7 +9,7 @@ namespace FolhaDePagamento.View
 
         public static void Exibir() {
         
-            //Funcionario func = new Funcionario();
+            Funcionario func = new Funcionario();
             PayRoll pr = new PayRoll();
 
             Console.WriteLine("Digite o CPF do funcionário!");
@@ -20,6 +20,8 @@ namespace FolhaDePagamento.View
                 foreach (Funcionario v in VendedorDAO.Mostrar())
                 {
                     Console.WriteLine("Seguinte CPF já está cadastrado: " + v.cpf + "\nCujo nome do Funcionário é: " + v.nome);
+                    pr.Funcionario.cpf = v.cpf;
+                    pr.Funcionario.nome = v.nome;
                 }
 
                 pr.mesAtual = DateTime.Now.Month;

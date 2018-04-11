@@ -6,6 +6,7 @@ namespace FolhaDePagamento.Model
 
         public PayRoll(){
             Funcionario = new Funcionario();
+
         }
 
         public Funcionario Funcionario { get; set; }
