@@ -23,6 +23,7 @@ namespace FolhaDePagamento.View
                 if (VendedorDAO.Cadastrar(func))
                 {
                     Console.WriteLine("Cadastro efetuado com sucesso!");
+
                     //Se der boa nas duas verificações ele entra aqui.
                 }else{
                     Console.WriteLine("Erro! CPF já cadastrado!");

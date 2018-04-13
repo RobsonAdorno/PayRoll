@@ -15,7 +15,6 @@ namespace FolhaDePagamento
             {
                
                 Console.Clear();
-                Console.ReadKey();
                 Console.WriteLine("Digite a opção desejada abaixo:");
                 Console.WriteLine("----------------------------------");
                 Console.WriteLine("1) Cadastrar Funcionário");
@@ -40,17 +39,28 @@ namespace FolhaDePagamento
                         break;
 
                     case "3":
-                        Console.WriteLine("Digite o CPF do funcionário!");
-                        string cpf = Console.ReadLine();
                         PayRoll pr = new PayRoll();
+                        Console.WriteLine("Digite o CPF do funcionário!");
+                        pr.Funcionario.cpf = Console.ReadLine();
+                        Console.WriteLine("Digite o mês da folha de pagamento");
+                        pr.mesAtual = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Digite o ano da folha de pagamento");
+                        pr.anoAtual = Convert.ToInt32(Console.ReadLine());
 
-                        if(FolhaDePagamentoDAO.CadastrationPayRoll(pr).Equals(cpf)){
+                        if(!FolhaDePagamentoDAO.CadastrationPayRoll(pr)){
                             foreach (PayRoll item in FolhaDePagamentoDAO.ShowTheRoll())
                             {
-                                Console.WriteLine("O nome: " + item.Funcionario.nome + "/nCPF:" +item.Funcionario.cpf + "Ano da folha: " + item.anoAtual +
-                                                  "Mes da folha: " + item.mesAtual);
+                                Console.WriteLine("O nome: " + item.Funcionario.nome + "\nCPF:" +item.Funcionario.cpf + "\nAno da folha: " + item.anoAtual +
+                                                  "\nMes da folha: " + item.mesAtual);
+                                
                             }
                         }
+                        Console.WriteLine("Pressione algum botão para voltar ao menu");
+                        Console.ReadKey();
+                        break;
+
+                    case "0":
+                        Console.WriteLine("Encerrando...");
                         break;
 
                     default:

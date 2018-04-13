@@ -16,8 +16,7 @@ namespace FolhaDePagamento.Model
         public double valorHorasTrabalhadas { get; set; }
 
         public override string ToString(){
-
-            Console.WriteLine(Funcionario.cpf);
+            
             return "Nome: " + Funcionario.nome +
             "\nCPF: " + Funcionario.cpf + "\nMês Atual:" + mesAtual + "\nAno Atual: " + anoAtual;
 

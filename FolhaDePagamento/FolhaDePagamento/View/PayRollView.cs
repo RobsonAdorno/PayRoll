@@ -30,7 +30,6 @@ namespace FolhaDePagamento.View
                 pr.horasTrabalhadas = Convert.ToInt16(Console.ReadLine());
                 Console.WriteLine("Digite o valor da hora trabalhada do funcionário, por favor!");
                 pr.valorHorasTrabalhadas = Convert.ToInt32(Console.ReadLine());
-                FolhaDePagamentoDAO.CadastrationPayRoll(pr);
 
                 if (FolhaDePagamentoDAO.CadastrationPayRoll(pr))
                 {
@@ -47,9 +46,12 @@ namespace FolhaDePagamento.View
             {
                 Console.WriteLine("Usuário não encontrado na base de dados!");
             }
-        
+            Console.WriteLine("Pressione algum botão para voltar ao menu");
+            Console.ReadKey();
+
         }
 
+      
        
     }
 }

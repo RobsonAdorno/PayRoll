@@ -20,16 +20,11 @@ namespace FolhaDePagamento.DAL
         public static PayRoll CallThePayRoll(PayRoll pr)
         {
             Funcionario funcio = new Funcionario();
-            PayRoll prrr = new PayRoll();
-
-            prrr.ToString();
             foreach (PayRoll item in ListOfPayRoll)
-            {
-                
-                   
+            {   
                 if (item.anoAtual.Equals(pr.anoAtual) || item.mesAtual.Equals(pr.mesAtual) || item.Funcionario.cpf.Equals(pr.Funcionario.cpf))
                 {
-                    Console.WriteLine(item);
+
                     return item;
 
                 }
