@@ -22,7 +22,10 @@ namespace FolhaDePagamento.Model
             return "Nome: " + Funcionario.nome +
                    "\nCPF: " + Funcionario.cpf + "\nMês Atual:" + mesAtual + "\nAno Atual: " + anoAtual +
             "\nSalario Bruto:" + CalculationOfTaxes.GrossSalary(horasTrabalhadas, valorHorasTrabalhadas).ToString("C2") + " no mês!" +
-             "\nImposto de Renda: " + CalculationOfTaxes.IncomeTax().ToString("C2");
+             "\nImposto de Renda: " + CalculationOfTaxes.IncomeTax().ToString("C2")+
+            "\nINSS: " + CalculationOfTaxes.INSS().ToString("C2")+
+             "\nFGTS: " + CalculationOfTaxes.ExtractionFGTS().ToString("C2")+
+             "\nSalário Líquido: " + CalculationOfTaxes.ShowNetSalary().ToString("C2");
 
         }
     }

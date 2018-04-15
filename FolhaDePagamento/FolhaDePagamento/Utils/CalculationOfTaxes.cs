@@ -7,6 +7,7 @@ namespace FolhaDePagamento.Utils
         public static double grossSalary;
 
         public static double deducion;
+        public static double deducion2;
 
         public static double GrossSalary(int horasTrabalhadas, double valorHorasTrabalhadas)
         {
@@ -22,9 +23,6 @@ namespace FolhaDePagamento.Utils
         }
 
         public static double IncomeTax(){
-            double tax = 0.0;
-            double netSalaryOfIT = 0.0;
-           
             if(grossSalary <= 1903.98){
 
                 deducion = grossSalary;
@@ -32,72 +30,62 @@ namespace FolhaDePagamento.Utils
 
             if (grossSalary >= 1903.99 && grossSalary <= 2826.65)
             {
-                tax = (grossSalary * 0.75);
-                netSalaryOfIT = (grossSalary - tax);
-                deducion = tax - 142.80;
-
+                deducion = (grossSalary * 0.075) - 142.80;
+              
             }
             if (grossSalary >= 2826.66 && grossSalary <= 3751.05)
             {
-                tax = (grossSalary * 0.15);
-                netSalaryOfIT = (grossSalary - tax);
-                deducion = tax - 354.80;
+                deducion = (grossSalary * 0.15) - 354.80;
             }
             if (grossSalary >= 3751.06 && grossSalary <= 4664.68)
             {
-                tax = (grossSalary * 0.225);
-                netSalaryOfIT = (grossSalary - tax);
-                deducion = tax - 636.13;
+                deducion = (grossSalary * 0.225)- 636.13;
             }
             if (grossSalary > 4664.68)
             {
-                tax = (grossSalary * 0.275);
-                netSalaryOfIT = (grossSalary - tax);
-                deducion = tax - 869.36;
+                deducion = (grossSalary * 0.275) - 869.36;
             }
             return deducion;
 
         }
 
         public static double INSS(){
-            double tax = 0.0;
-            double netSalaryOfINSS;
+           
 
             if (grossSalary <= 1659.38 )
             {
-                tax = (grossSalary * 0.8);
-                netSalaryOfINSS = (grossSalary - tax);
+                deducion2 = (grossSalary * 0.08);
+
             }
 
             if (grossSalary >= 1659.39 && grossSalary <= 2765.66)
             {
-                tax = (grossSalary * 0.9);
-                netSalaryOfINSS = (grossSalary - tax);
+                deducion2 = (grossSalary * 0.09);
             }
 
             if (grossSalary >= 2765.67 && grossSalary <= 5531.31)
             {
-                tax = (grossSalary * 0.11);
-                netSalaryOfINSS = (grossSalary - tax);
+                deducion2 = (grossSalary * 0.11);
             }
 
             if (grossSalary >= 5531.32)
             {
-                tax = (grossSalary - 608.44);
-                netSalaryOfINSS = (grossSalary - tax);
+                deducion2 = (grossSalary - 608.44);
+              
             }
-            return tax;
+            return deducion2;
         }
 
         public static double ExtractionFGTS(){
-            double tax = 0.0;
+            double tax = 0f;
         
-            tax = (grossSalary * 0.8);
+            tax = (grossSalary * 0.08);
             return tax;
         }
 
-        public static double ShowNetSalary(double netSalaryOfIT,double netSalaryOfINSS){
-            double NetSalary = netSalaryOfINSS - netSalaryOfIT ;
+        public static double ShowNetSalary(){
+            double NetSalary = (grossSalary - deducion);
+            NetSalary = (NetSalary - deducion2);
 
             return NetSalary;
         }
