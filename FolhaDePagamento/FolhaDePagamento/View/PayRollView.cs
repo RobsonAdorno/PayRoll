@@ -1,6 +1,7 @@
 ﻿using System;
 using FolhaDePagamento.DAL;
 using FolhaDePagamento.Model;
+using FolhaDePagamento.Utils;
 
 namespace FolhaDePagamento.View
 {
@@ -11,6 +12,7 @@ namespace FolhaDePagamento.View
         
             Funcionario func = new Funcionario();
             PayRoll pr = new PayRoll();
+
 
             Console.WriteLine("Digite o CPF do funcionário!");
             string cpfs = Console.ReadLine();
@@ -29,8 +31,7 @@ namespace FolhaDePagamento.View
                 Console.WriteLine("Digite as horas trabalhadas do funcionário, por favor!");
                 pr.horasTrabalhadas = Convert.ToInt16(Console.ReadLine());
                 Console.WriteLine("Digite o valor da hora trabalhada do funcionário, por favor!");
-                pr.valorHorasTrabalhadas = Convert.ToInt32(Console.ReadLine());
-
+                pr.valorHorasTrabalhadas = Convert.ToDouble(Console.ReadLine());
                 if (FolhaDePagamentoDAO.CadastrationPayRoll(pr))
                 {
 

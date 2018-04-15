@@ -2,6 +2,7 @@
 using FolhaDePagamento.Model;
 using FolhaDePagamento.DAL;
 using FolhaDePagamento.View;
+using FolhaDePagamento.Utils;
 
 namespace FolhaDePagamento
 {
@@ -40,6 +41,7 @@ namespace FolhaDePagamento
 
                     case "3":
                         PayRoll pr = new PayRoll();
+
                         Console.WriteLine("Digite o CPF do funcionário!");
                         pr.Funcionario.cpf = Console.ReadLine();
                         Console.WriteLine("Digite o mês da folha de pagamento");
@@ -47,14 +49,23 @@ namespace FolhaDePagamento
                         Console.WriteLine("Digite o ano da folha de pagamento");
                         pr.anoAtual = Convert.ToInt32(Console.ReadLine());
 
-                        if(!FolhaDePagamentoDAO.CadastrationPayRoll(pr)){
-                            foreach (PayRoll item in FolhaDePagamentoDAO.ShowTheRoll())
+                        if ( FolhaDePagamentoDAO.CallInformation(pr.Funcionario.cpf, pr.mesAtual, pr.anoAtual)){
+
+                            if (!FolhaDePagamentoDAO.CadastrationPayRoll(pr))
                             {
-                                Console.WriteLine("O nome: " + item.Funcionario.nome + "\nCPF:" +item.Funcionario.cpf + "\nAno da folha: " + item.anoAtual +
-                                                  "\nMes da folha: " + item.mesAtual);
-                                
+                                foreach (PayRoll item in FolhaDePagamentoDAO.ShowTheRoll())
+                                {
+                                    Console.WriteLine(item.ToString());
+                                     
+                                }
                             }
+                        }else{
+
+                            Console.WriteLine("Folha de pagamento não encontrada na base de dados!");
+
                         }
+
+                       
                         Console.WriteLine("Pressione algum botão para voltar ao menu");
                         Console.ReadKey();
                         break;

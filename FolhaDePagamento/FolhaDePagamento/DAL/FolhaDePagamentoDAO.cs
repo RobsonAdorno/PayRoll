@@ -13,8 +13,15 @@ namespace FolhaDePagamento.DAL
 
         VendedorDAO ahh = new VendedorDAO();
 
-        public static void CadastrarCPF(PayRoll cpf){
-            ListOfPayRoll.Add(cpf);
+        public static bool CallInformation(string cpf, int mesAtual, int anoAtual){
+            foreach (PayRoll i in ListOfPayRoll)
+            {
+                if(cpf.Equals(i.Funcionario.cpf) || (mesAtual.Equals(i.mesAtual)) || (anoAtual.Equals(i.anoAtual))){
+
+                    return true;
+                }
+            }
+            return false;
         }
 
         public static PayRoll CallThePayRoll(PayRoll pr)

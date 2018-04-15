@@ -1,4 +1,6 @@
 ﻿using System;
+using FolhaDePagamento.Utils;
+
 namespace FolhaDePagamento.Model
 {
     public class PayRoll
@@ -18,7 +20,9 @@ namespace FolhaDePagamento.Model
         public override string ToString(){
             
             return "Nome: " + Funcionario.nome +
-            "\nCPF: " + Funcionario.cpf + "\nMês Atual:" + mesAtual + "\nAno Atual: " + anoAtual;
+                   "\nCPF: " + Funcionario.cpf + "\nMês Atual:" + mesAtual + "\nAno Atual: " + anoAtual +
+            "\nSalario Bruto:" + CalculationOfTaxes.GrossSalary(horasTrabalhadas, valorHorasTrabalhadas).ToString("C2") + " no mês!" +
+             "\nImposto de Renda: " + CalculationOfTaxes.IncomeTax().ToString("C2");
 
         }
     }
