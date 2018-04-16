@@ -26,9 +26,8 @@ namespace FolhaDePagamento.DAL
 
         public static PayRoll CallThePayRoll(PayRoll pr)
         {
-            Funcionario funcio = new Funcionario();
             foreach (PayRoll item in ListOfPayRoll)
-            {   
+            {
                 if (item.anoAtual.Equals(pr.anoAtual) || item.mesAtual.Equals(pr.mesAtual) || item.Funcionario.cpf.Equals(pr.Funcionario.cpf))
                 {
 
@@ -36,15 +35,31 @@ namespace FolhaDePagamento.DAL
 
                 }
 
+             
+
             }
             return null;
+        }
+
+        public static HashSet<PayRoll> CheckingData(int MesAtual, int AnoAtual){
+            
+            foreach (PayRoll p  in ListOfPayRoll)
+            {
+                if (p.mesAtual.Equals(MesAtual) && (p.anoAtual.Equals(AnoAtual))){
+
+                    return ListOfPayRoll;
+
+                }   
+            }
+
+            return null;
+
         }
 
 
 
         public static bool CadastrationPayRoll(PayRoll p)
         {
-
             if (CallThePayRoll(p) != null)
             {
                 return false;

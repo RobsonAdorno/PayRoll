@@ -44,10 +44,7 @@ namespace FolhaDePagamento
 
                         Console.WriteLine("Digite o CPF do funcionário!");
                         pr.Funcionario.cpf = Console.ReadLine();
-                        Console.WriteLine("Digite o mês da folha de pagamento");
-                        pr.mesAtual = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Digite o ano da folha de pagamento");
-                        pr.anoAtual = Convert.ToInt32(Console.ReadLine());
+
 
                         if ( FolhaDePagamentoDAO.CallInformation(pr.Funcionario.cpf, pr.mesAtual, pr.anoAtual)){
 
@@ -68,6 +65,27 @@ namespace FolhaDePagamento
                        
                         Console.WriteLine("Pressione algum botão para voltar ao menu");
                         Console.ReadKey();
+                        break;
+                    case "4":
+                        Console.WriteLine("Digite o mês da folha de pagamento");
+                        int mesAtual = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Digite o ano da folha de pagamento");
+                        int anoAtual = Convert.ToInt32(Console.ReadLine());
+
+                        if (FolhaDePagamentoDAO.CheckingData(mesAtual, anoAtual) != null){
+
+                            Console.WriteLine("Dados encontrados na base de dados!");
+
+                            foreach (PayRoll item in FolhaDePagamentoDAO.CheckingData(mesAtual, anoAtual))
+                            {
+                                Console.WriteLine(item.ToString());
+                            }
+                        }else{
+                            Console.WriteLine("Dados incorretos!");
+                        }
+                        Console.WriteLine("Pressione algum botão para voltar ao menu");
+                        Console.ReadKey();
+
                         break;
 
                     case "0":
